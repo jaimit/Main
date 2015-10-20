@@ -1,7 +1,15 @@
 CodeBook
 =====================================================
 
+
+The final dataset was obtained using the **dplyr** package
+**datatidyfinal<-group_by(datatidy,subjectnumber,activityname,features)**
+**datatidyfinal<- summarise(datatidyfinal,count=.N,mean=mean(value))**
+
+The details of the variables, the data, and any transformations that were performed to clean up the original data to result in the final tidy data are described below
+
 The final tidydata set has the following variables.
+
 ------------------------------
 
 Variable name    | Description
