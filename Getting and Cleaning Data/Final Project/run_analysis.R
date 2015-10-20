@@ -174,10 +174,20 @@ setkey(datatidy,subjectnumber,activityname,features)
 
 #Final tidy data
 
-datatidyfinal<-datatidy[,list(count=.N,Mean_Feature=mean(value)),by=key(datatidy)]
+datatidyfinal<-group_by(datatidy,subjectnumber,activityname,features)
+datatidyfinal<- summarise(datatidyfinal,count=.N,mean=mean(value))
+
+#Alternate ways
+
+#datatidy%>%
+#           group_by(subjectnumber,activityname,features)%>%
+#                                   summarise(count=.N,mean=mean(value))
+
+#datatidyfinal<-datatidy[,list(count=.N,Mean_Feature=mean(value)),by=key(datatidy)]
 
 #convert the variables subject number and activityname to factors
  datatidyfinal$subjectnumber<-factor(datatidyfinal$subjectnumber)
  datatidyfinal$activityname<-factor(datatidyfinal$activityname)
 
+ datatidyfinal
 str(datatidyfinal)
