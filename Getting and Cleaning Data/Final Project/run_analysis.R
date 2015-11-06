@@ -135,6 +135,12 @@ setkey(data,activitynumber,activityname,subjectnumber)
 #created earlier
 
 # So now each variable of the data set has secreptive variable names
+# Convert all the features to lower case
+dataFeatures$featurename<-tolower(dataFeatures$featurename)
+
+
+# remove all the puncuations 
+dataFeatures$featurename<-gsub("[[:punct:]]", "", dataFeatures$featurename)
 
 setnames(data, names(data), c(key(data),dataFeatures$featurename))
 

@@ -1,3 +1,6 @@
+---
+output: html_document
+---
 CodeBook
 =====================================================
 
@@ -376,6 +379,8 @@ created earlier
 So now each variable of the data set has secreptive variable names
 
 
+
+
 ```r
 setnames(data, names(data), c(key(data),dataFeatures$featurename))
 ```
@@ -423,6 +428,16 @@ activity name and feaures
 Using the arrange command of the dplyr package 
 
 
+```r
+# Convert all the features to lower case
+dataFeatures$featurename<-tolower(dataFeatures$featurename)
+
+
+# remove all the puncuations 
+dataFeatures$featurename<-gsub("[[:punct:]]", "", dataFeatures$featurename)
+
+setnames(data, names(data), c(key(data),dataFeatures$featurename))
+```
 
 ```r
 datatidy<-arrange(datatidy,subjectnumber,activityname,features)
